@@ -25,7 +25,7 @@ card_list = [
 deck = [f"{cardkind['key']}{number}" for cardkind in card_list for number in range(1, cardkind["max"] + 1)] * 4
 
 def get_random_cards(count=14, sort=True, alt_deck=None):
-    _deck = deck
+    _deck = deck.copy()
     if alt_deck:
         _deck = alt_deck
     picked = random.sample(_deck, count)
@@ -65,7 +65,9 @@ def pick_card(remove_cards: list):
     card = random.sample(_deck, 1)[0]
     return card
 
-def create_image(cards=get_random_cards()):
+def create_image(cards=None):
+    if not cards:
+        cards = get_random_cards()
     filename = f'{to_string_cards(cards)}.jpg'
     image_files = [f"image/{card}.jpg" for card in cards]
 

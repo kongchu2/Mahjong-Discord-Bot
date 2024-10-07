@@ -61,7 +61,7 @@ async def on_message(message):
                                     giri = mj.translater(msg)
                                     remove_not_except(cards, giri)
                             if len(cards) == 14:
-                                await message.reply("조패에 실패했습니다.")
+                                await message.reply("타패에 실패했습니다.")
                                 return
                             tsumo = mj.pick_card(remove_cards)
                             cards.append(tsumo)
