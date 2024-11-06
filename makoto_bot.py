@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord import app_commands
 
 import os
 from dotenv import load_dotenv
@@ -8,6 +9,8 @@ import io
 import mj
 
 import random
+
+from sd import pick_random_hwatu
 
 
 load_dotenv()
@@ -109,14 +112,40 @@ async def send_image(interaction: discord.Interaction):
         image_binary.seek(0)
         await interaction.response.send_message(file=discord.File(fp=image_binary, filename=filename))
 
-@bot.tree.command(name="뽑기", description=", 으로 구분해주세요.")
+@bot.tree.command(name="뽑기", description="척척박사")
+@app_commands.describe(items=", 으로 구분해주세요.")
 async def send_pick(interaction: discord.Interaction, items: str):
     try:
         lst = items.strip().split(',')
         picked = random.choice(lst)
-        response = f"뽑기 결과: {picked}"
+        response = f"보기: {items}\n결과: {picked}"
     except:
         response = "뽑기에 실패했습니다."
     await interaction.response.send_message(content=response)
+
+@bot.tree.command(name="섯다", description="섯다 뽑기")
+@app_commands.describe(장수="몇장?")
+@app_commands.choices(장수=[
+    app_commands.Choice(name="2", value=2),
+    app_commands.Choice(name="3", value=3),
+])
+async def send_sutda(interaction: discord.Interaction, 장수: int = 2):
+    with io.BytesIO() as image_binary:
+        image = pick_random_hwatu(장수)
+        image.save(image_binary, 'PNG')
+        image_binary.seek(0)
+        await interaction.response.send_message(file=discord.File(fp=image_binary, filename="sutda.png"))
+
+@bot.tree.command(name="동전", description="동전이 설 수도?")
+
+async def send_coin(interaction: discord.Interaction):
+    if random.randint(1, 6000) == 1:
+        content = "동전이 섰다!"
+    elif random.randint(0, 1) == 1:
+        content = "동전이 앞면으로 떨어졌습니다."
+    else:
+        content = "동전이 뒷면으로 떨어졌습니다."
+        
+    await interaction.response.send_message(content=content)
 
 bot.run(TOKEN)
