@@ -7,6 +7,8 @@ import requests
 import io
 import mj
 
+import random
+
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
@@ -37,7 +39,7 @@ async def on_message(message):
         try:
             referenced_message = await message.channel.fetch_message(message.reference.message_id)
             if referenced_message.author == bot.user:
-                await send_majak(message, referenced_message)
+                await send_majak(message, referenced_message, True)
                 return
         except discord.errors.NotFound:
             pass
@@ -51,11 +53,13 @@ async def on_message(message):
                 break
         if not last_ref_message:
             last_ref_message = await thread.parent.fetch_message(thread.id)
-        await send_majak(message, last_ref_message)
+        if last_ref_message.author.id != bot.user.id:
+            return
+        await send_majak(message, last_ref_message, False)
         return
             
 
-async def send_majak(message: discord.Message, referenced_message: discord.Message):
+async def send_majak(message: discord.Message, referenced_message: discord.Message, failed_message=True):
     if referenced_message.attachments:
         for attachment in referenced_message.attachments:
             if attachment.filename.endswith('jpg'):
@@ -84,7 +88,8 @@ async def send_majak(message: discord.Message, referenced_message: discord.Messa
                     except:
                         pass
                 if len(cards) == 14:
-                    await message.reply("타패에 실패했습니다.")
+                    if failed_message:
+                        await message.reply("타패에 실패했습니다.")
                     return
                 giri_history.append(giri)
                 tsumo = mj.pick_card(remove_cards)
@@ -104,5 +109,14 @@ async def send_image(interaction: discord.Interaction):
         image_binary.seek(0)
         await interaction.response.send_message(file=discord.File(fp=image_binary, filename=filename))
 
+@bot.tree.command(name="뽑기", description=", 으로 구분해주세요.")
+async def send_pick(interaction: discord.Interaction, items: str):
+    try:
+        lst = items.strip().split(',')
+        picked = random.choice(lst)
+        response = f"뽑기 결과: {picked}"
+    except:
+        response = "뽑기에 실패했습니다."
+    await interaction.response.send_message(content=response)
 
 bot.run(TOKEN)

@@ -69,7 +69,7 @@ def create_image(cards=None):
     if not cards:
         cards = get_random_cards()
     filename = f'{to_string_cards(cards)}.jpg'
-    image_files = [f"image/{card}.jpg" for card in cards]
+    image_files = [f"image/majak/{card}.jpg" for card in cards]
 
     # 이미지 열기
     images = [Image.open(image) for image in image_files]
