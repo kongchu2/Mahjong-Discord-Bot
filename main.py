@@ -1,3 +1,4 @@
+from src.cmds.ai.command import AICommand
 from src.cmds.coin.command import CoinCommand
 from src.cmds.mahjong.command import MahjongCommand
 from src.cmds.pick.command import PickCommand
@@ -11,7 +12,8 @@ if Config.DISCORD_BOT_TOKEN is None:
     raise ValueError("DISCORD_BOT_TOKEN cannot be NULL")
 
 bot = DiscordBot(
-    Config.DISCORD_BOT_TOKEN, [CoinCommand, PickCommand, SutdaCommand, MahjongCommand]
+    Config.DISCORD_BOT_TOKEN,
+    [CoinCommand, PickCommand, SutdaCommand, MahjongCommand, AICommand],
 )
 
 bot.run()
