@@ -14,5 +14,5 @@ class Config:
     @staticmethod
     def print_config():
         for key, value in Config.__dict__.items():
-            if not key.startswith("__"):
+            if not key.startswith("__") and key != "print_config":
                 print(f"{key}: {value}")
