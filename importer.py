@@ -1,7 +1,6 @@
 import importlib
-import sys
 import os
-from makoto import bot
+import sys
 
 
 def import_all_modules_from_folder(folder_path):
@@ -16,15 +15,3 @@ def import_all_modules_from_folder(folder_path):
                 print(f"Successfully imported {module_name}")
             except Exception as e:
                 print(f"Failed to import {module_name}: {e}")
-
-
-folder_path = "commands"
-import_all_modules_from_folder(folder_path)
-
-
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-TOKEN = os.getenv("TOKEN")
-bot.run(TOKEN)
