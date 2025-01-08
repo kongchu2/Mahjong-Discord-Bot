@@ -28,10 +28,10 @@ class MahjongCommand(CustomCommand):
 
         @bot.event
         async def on_message(message: discord.Message):
-            _on_message(message)
+            _on_message(bot, message)
 
 
-async def _on_message(message: discord.Message):
+async def _on_message(bot: DiscordBot, message: discord.Message):
     if (
         message.author == bot.user
         or message.is_system()
