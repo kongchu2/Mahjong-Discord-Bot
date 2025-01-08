@@ -24,7 +24,7 @@ jobs:
           if [ ! -d "/home/ubuntu/deploy/mahjongbot" ]; then
             mkdir -p /home/ubuntu/deploy
             cd /home/ubuntu/deploy
-            git clone git@github.com:your-repo/mahjongbot.git
+            git clone https://github.com/kongchu2/Mahjong-Discord-Bot.git
           else
             cd /home/ubuntu/deploy/mahjongbot
             git pull origin main
