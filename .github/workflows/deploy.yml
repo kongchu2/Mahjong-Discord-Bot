@@ -21,15 +21,15 @@ jobs:
     - name: Deploy to Server
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.SERVER_HOST }} << 'EOF'
-          if [ ! -d "/home/ubuntu/deploy/mahjongbot" ]; then
+          if [ ! -d "/home/ubuntu/deploy/Mahjong-Discord-Bot" ]; then
             mkdir -p /home/ubuntu/deploy
             cd /home/ubuntu/deploy
             git clone https://github.com/kongchu2/Mahjong-Discord-Bot.git
           else
-            cd /home/ubuntu/deploy/mahjongbot
+            cd /home/ubuntu/deploy/Mahjong-Discord-Bot
             git pull origin main
           fi
-          cd /home/ubuntu/deploy/mahjongbot
+          cd /home/ubuntu/deploy/Mahjong-Discord-Bot
           echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
           docker-compose down
           docker-compose up -d --build
