@@ -1,9 +1,8 @@
 import io
 
 import discord
-
-from cmds.custom_command import CustomCommand
-from cmds.mahjong.service import (
+from src.cmds.custom_command import CustomCommand
+from src.cmds.mahjong.service import (
     create_image,
     parse_cards,
     pick_card,
@@ -11,8 +10,8 @@ from cmds.mahjong.service import (
     to_string_cards,
     translater,
 )
-from cmds.sutda.service import remove_not_except
-from discord_bot import DiscordBot
+from src.cmds.sutda.service import remove_not_except
+from src.discord.discord_bot import DiscordBot
 
 
 class MahjongCommand(CustomCommand):

@@ -2,10 +2,9 @@ import io
 
 import discord
 from discord import app_commands
-
-from cmds.custom_command import CustomCommand
-from cmds.sutda.service import pick_random_hwatu
-from discord_bot import DiscordBot
+from src.cmds.custom_command import CustomCommand
+from src.cmds.sutda.service import pick_random_hwatu
+from src.discord.discord_bot import DiscordBot
 
 
 class SutdaCommand(CustomCommand):

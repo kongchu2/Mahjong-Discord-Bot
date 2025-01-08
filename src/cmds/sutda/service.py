@@ -2,7 +2,7 @@ import random
 
 from PIL import Image
 
-from config import Config
+from src.core.config import Config
 
 
 def pick_random_hwatu(count=2):

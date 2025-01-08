@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING, Protocol
 
 if TYPE_CHECKING:
-    from discord_bot import DiscordBot
+    from src.discord.discord_bot import DiscordBot
 
 
 class CustomCommand(Protocol):

@@ -3,7 +3,7 @@ from collections import defaultdict
 
 from PIL import Image
 
-from config import Config
+from src.core.config import Config
 
 card_list: list[dict[str, str | int]] = [
     {"key": "m", "max": 9},

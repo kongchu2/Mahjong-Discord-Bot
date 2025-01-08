@@ -1,9 +1,9 @@
-from cmds.coin.command import CoinCommand
-from cmds.mahjong.command import MahjongCommand
-from cmds.pick.command import PickCommand
-from cmds.sutda.command import SutdaCommand
-from config import Config
-from discord_bot import DiscordBot
+from src.cmds.coin.command import CoinCommand
+from src.cmds.mahjong.command import MahjongCommand
+from src.cmds.pick.command import PickCommand
+from src.cmds.sutda.command import SutdaCommand
+from src.core.config import Config
+from src.discord.discord_bot import DiscordBot
 
 Config.print_config()
 

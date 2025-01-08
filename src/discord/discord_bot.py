@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
-
-from cmds.custom_command import CustomCommand
+from src.cmds.custom_command import CustomCommand
 
 
 class DiscordBot(commands.Bot):

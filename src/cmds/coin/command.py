@@ -1,8 +1,7 @@
 import discord
-
-from cmds.coin.service import coin
-from cmds.custom_command import CustomCommand
-from discord_bot import DiscordBot
+from src.cmds.coin.service import coin
+from src.cmds.custom_command import CustomCommand
+from src.discord.discord_bot import DiscordBot
 
 
 class CoinCommand(CustomCommand):

@@ -1,9 +1,8 @@
 import discord
 from discord import app_commands
-
-from cmds.custom_command import CustomCommand
-from cmds.pick.service import pick
-from discord_bot import DiscordBot
+from src.cmds.custom_command import CustomCommand
+from src.cmds.pick.service import pick
+from src.discord.discord_bot import DiscordBot
 
 
 class PickCommand(CustomCommand):
