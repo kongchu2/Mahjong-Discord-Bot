@@ -19,7 +19,7 @@ def prompt(prompt) -> str:
                 {"role": "user", "content": prompt},
             ],
             temperature=0.7,
-            max_tokens=150,
+            max_tokens=500,
         )
 
         return str(completion.choices[0].message.content)
