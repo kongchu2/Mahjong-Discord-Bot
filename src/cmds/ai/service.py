@@ -22,7 +22,7 @@ def prompt(prompt) -> str:
             max_tokens=150,
         )
 
-        return str(completion.choices[0].message)
+        return str(completion.choices[0].message.content)
     except Exception as e:
         print(e)
         return "응답에 실패했습니다."
