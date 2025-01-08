@@ -3,6 +3,9 @@ from discord import app_commands
 import io
 import discord
 
+import random
+from PIL import Image
+
 
 @bot.tree.command(name="섯다", description="섯다 뽑기")
 @app_commands.describe(장수="몇장?")
@@ -20,10 +23,6 @@ async def send_sutda(interaction: discord.Interaction, 장수: int = 2):
         await interaction.response.send_message(
             file=discord.File(fp=image_binary, filename="sutda.png")
         )
-
-
-import random
-from PIL import Image
 
 
 def pick_random_hwatu(count=2):

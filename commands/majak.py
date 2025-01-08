@@ -1,6 +1,11 @@
-from makoto import bot
 import io
+import random
+from collections import defaultdict
+
 import discord
+from PIL import Image
+
+from makoto import bot
 
 
 @bot.tree.command(name="마작", description="이미지를 전송합니다.")
@@ -13,12 +18,6 @@ async def send_image(interaction: discord.Interaction):
             file=discord.File(fp=image_binary, filename=filename)
         )
 
-
-from PIL import Image
-
-import os
-import random
-from collections import defaultdict
 
 card_list = [
     {"key": "m", "max": 9},
@@ -108,7 +107,6 @@ def create_image(cards=None):
 
 
 def translater(msg: str):
-
     z = "동남서북백발중"
     b = "만삭통"
     a = "msp"
@@ -171,6 +169,7 @@ async def send_majak(
                         file=discord.File(fp=image_binary, filename=filename),
                     )
 
+
 @bot.event
 async def on_message(message: discord.Message):
     if (
@@ -204,6 +203,7 @@ async def on_message(message: discord.Message):
             return
         await send_majak(message, last_ref_message, False)
         return
+
 
 def remove_not_except(list, key):
     try:

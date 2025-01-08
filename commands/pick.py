@@ -3,6 +3,7 @@ from discord import app_commands
 import random
 import discord
 
+
 @bot.tree.command(name="뽑기", description="척척박사")
 @app_commands.describe(items=", 으로 구분해주세요.")
 async def send_pick(interaction: discord.Interaction, items: str):
