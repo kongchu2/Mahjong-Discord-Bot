@@ -28,7 +28,7 @@ class MahjongCommand(CustomCommand):
 
         @bot.event
         async def on_message(message: discord.Message):
-            _on_message(bot, message)
+            await _on_message(bot, message)
 
 
 async def _on_message(bot: DiscordBot, message: discord.Message):
