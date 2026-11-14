@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+.git
+.github
+.vscode
+__pycache__
+*.pyc
+botenv
+nohup.out
+output
+tests
+tools
